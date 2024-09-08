@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Quiz</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Let's Start!</h1>
+    
+    <form action="/quiz" method="POST" class="p-4 border rounded bg-white">
+      <!-- Question 1 -->
+      <div class="mb-4">
+        <label class="form-label">Question 1: Which of the following devices is output?</label>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q1 === 'wrong' && answers.q1 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q1" value="wrong" id="q1a1">
+          <label class="form-check-label" for="q1a1">Mouse</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q1 === 'wrong' && answers.q1 === 'correct') { %> is-invalid <% } else if (feedback.q1 === 'correct' && answers.q1 === 'correct') { %> is-valid <% } %>" 
+            type="radio" name="q1" value="correct" id="q1a2">
+          <label class="form-check-label" for="q1a2">Printer</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q1 === 'wrong' && answers.q1 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q1" value="wrong" id="q1a3">
+          <label class="form-check-label" for="q1a3">Keyboard</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q1 === 'wrong' && answers.q1 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q1" value="wrong" id="q1a4">
+          <label class="form-check-label" for="q1a4">Camera</label>
+        </div>
+        <% if (feedback.q1 === 'wrong') { %>
+            <div class="invalid-feedback">The correct answer is "Printer".</div>
+        <% } %>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="mb-4">
+        <label class="form-label">Question 2: What are the components of a computer?</label>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q2 === 'wrong' && answers.q2 === 'correct') { %> is-invalid <% } else if (feedback.q2 === 'correct' && answers.q2 === 'correct') { %> is-valid <% } %>" 
+            type="radio" name="q2" value="correct" id="q2a1">
+          <label class="form-check-label" for="q2a1">Hardware & Software</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q2 === 'wrong' && answers.q2 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q2" value="wrong" id="q2a2">
+          <label class="form-check-label" for="q2a2">Hardware & Mouse</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q2 === 'wrong' && answers.q2 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q2" value="wrong" id="q2a3">
+          <label class="form-check-label" for="q2a3">Software & Spreadsheet</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q2 === 'wrong' && answers.q2 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q2" value="wrong" id="q2a4">
+          <label class="form-check-label" for="q2a4">Software & Monitor</label>
+        </div>
+        <% if (feedback.q2 === 'wrong') { %>
+            <div class="invalid-feedback">The correct answer is "Hardware & Software".</div>
+        <% } %>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="mb-4">
+        <label class="form-label">Question 3: What are the two categories of hardware?</label>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q3 === 'wrong' && answers.q3 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q3" value="wrong" id="q3a1">
+          <label class="form-check-label" for="q3a1">Internal & Hardware</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q3 === 'wrong' && answers.q3 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q3" value="wrong" id="q3a2">
+          <label class="form-check-label" for="q3a2">Software & External</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q3 === 'wrong' && answers.q3 === 'correct') { %> is-invalid <% } else if (feedback.q3 === 'correct' && answers.q3 === 'correct') { %> is-valid <% } %>" 
+            type="radio" name="q3" value="correct" id="q3a3">
+          <label class="form-check-label" for="q3a3">Internal & External</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q3 === 'wrong' && answers.q3 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q3" value="wrong" id="q3a4">
+          <label class="form-check-label" for="q3a4">External & Monitor</label>
+        </div>
+        <% if (feedback.q3 === 'wrong') { %>
+            <div class="invalid-feedback">The correct answer is "Internal & External".</div>
+        <% } %>
+      </div>
+
+     <!-- Question 4 -->
+     <div class="mb-4">
+       <label class="form-label">Question 4: Which of the following falls under the internal hardware?</label>
+       <div class="form-check">
+        <input class="form-check-input <% if (feedback.q4 === 'wrong' && answers.q4 === 'wrong') { %> is-invalid <% } %>" 
+        type="radio" name="q4" value="wrong" id="q4a1">
+         <label class="form-check-label" for="q4a1">Plotter</label>
+       </div>
+       <div class="form-check">
+        <input class="form-check-input <% if (feedback.q4 === 'wrong' && answers.q4 === 'wrong') { %> is-invalid <% } %>" 
+        type="radio" name="q4" value="wrong" id="q4a2">
+         <label class="form-check-label" for="q4a2">Mouse</label>
+       </div>
+       <div class="form-check">
+        <input class="form-check-input <% if (feedback.q4 === 'wrong' && answers.q4 === 'wrong') { %> is-invalid <% } %>" 
+        type="radio" name="q4" value="wrong" id="q4a3">
+         <label class="form-check-label" for="q4a3">Monitor</label>
+       </div>
+       <div class="form-check">
+        <input class="form-check-input <% if (feedback.q4 === 'wrong' && answers.q4 === 'correct') { %> is-invalid <% } else if (feedback.q4 === 'correct' && answers.q4 === 'correct') { %> is-valid <% } %>" 
+        type="radio" name="q4" value="correct" id="q4a4">
+         <label class="form-check-label" for="q4a4">Random Access Memory (RAM)</label>
+       </div>
+       <% if (feedback.q4 === 'wrong') { %>
+        <div class="invalid-feedback">The correct answer is "Random Access Memory (RAM)".</div>
+       <% } %>
+     </div>
+
+     <!-- Question 5 -->
+     <div class="mb-4">
+        <label class="form-label">Question 5: Application software is...</label>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q5 === 'wrong' && answers.q5 === 'correct') { %> is-invalid <% } else if (feedback.q5 === 'correct' && answers.q5 === 'correct') { %> is-valid <% } %>" 
+            type="radio" name="q5" value="correct" id="q5a1">
+          <label class="form-check-label" for="q5a1">Programs that allow the user to do specific tasks</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q5 === 'wrong' && answers.q5 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q5" value="wrong" id="q5a2">
+          <label class="form-check-label" for="q5a2">Programs that allow the hardware to run the property & allow the user to communicate with the computer</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q5 === 'wrong' && answers.q5 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q5" value="wrong" id="q5a3">
+          <label class="form-check-label" for="q5a3"> Software that is running in the background of computer system</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q5 === 'wrong' && answers.q5 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q5" value="wrong" id="q5a4">
+          <label class="form-check-label" for="q5a4">Something that allows the user to interact with a computer using pictures or symbols/icons</label>
+        </div>
+        <% if (feedback.q5 === 'wrong') { %>
+            <div class="invalid-feedback">The correct answer is "Programs that allow the user to do specific tasks".</div>
+        <% } %>
+      </div>
+
+      <!-- Question 6 -->
+     <div class="mb-4">
+        <label class="form-label">Question 6: Which of the following considers as secondary storage device?</label>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q6 === 'wrong' && answers.q6 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q6" value="wrong" id="q6a1">
+          <label class="form-check-label" for="q6a1">Operating system (OS)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q6 === 'wrong' && answers.q6 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q6" value="wrong" id="q6a2">
+          <label class="form-check-label" for="q6a2">Motherboard</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q6 === 'wrong' && answers.q6 === 'correct') { %> is-invalid <% } else if (feedback.q6 === 'correct' && answers.q6 === 'correct') { %> is-valid <% } %>" 
+            type="radio" name="q6" value="correct" id="q6a3">
+          <label class="form-check-label" for="q6a3"> Solid-state drive</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q6 === 'wrong' && answers.q6 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q6" value="wrong" id="q6a4">
+          <label class="form-check-label" for="q6a4">Microprocessor</label>
+        </div>
+        <% if (feedback.q6 === 'wrong') { %>
+            <div class="invalid-feedback">The correct answer is "Solid-state drive".</div>
+        <% } %>
+      </div>
+
+       <!-- Question 7 -->
+       <div class="mb-4">
+        <label class="form-label">Question 7: Which memory is used to store informaton that needs to be permanent?</label>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q7 === 'wrong' && answers.q7 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q7" value="wrong" id="q7a1">
+          <label class="form-check-label" for="q7a1">Random access memory (RAM)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q7 === 'wrong' && answers.q7 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q7" value="wrong" id="q7a2">
+          <label class="form-check-label" for="q7a2">Basic input/output system (BIOS)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q7 === 'wrong' && answers.q7 === 'correct') { %> is-invalid <% } else if (feedback.q7 === 'correct' && answers.q7 === 'correct') { %> is-valid <% } %>" 
+            type="radio" name="q7" value="correct" id="q7a3">
+          <label class="form-check-label" for="q7a3">Read-only memory (ROM)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q7 === 'wrong' && answers.q7 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q7" value="wrong" id="q7a4">
+          <label class="form-check-label" for="q7a4">Hard-disk drive (HDD)</label>
+        </div>
+        <% if (feedback.q7 === 'wrong') { %>
+            <div class="invalid-feedback">The correct answer is "Read-only memory (ROM)".</div>
+        <% } %>
+      </div>
+
+       <!-- Question 8 -->
+       <div class="mb-4">
+        <label class="form-label">Question 8: It requires a user to type in instructions to choose options from menus, open software, etc.</label>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q8 === 'wrong' && answers.q8 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q8" value="wrong" id="q8a1">
+          <label class="form-check-label" for="q8a1">Gesture-based interface</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q8 === 'wrong' && answers.q8 === 'correct') { %> is-invalid <% } else if (feedback.q8 === 'correct' && answers.q8 === 'correct') { %> is-valid <% } %>" 
+            type="radio" name="q8" value="correct" id="q8a2">
+          <label class="form-check-label" for="q8a2">Command line interface (CLI)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q8 === 'wrong' && answers.q8 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q8" value="wrong" id="q8a3">
+          <label class="form-check-label" for="q8a3">Dialogue-based interface</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input <% if (feedback.q8 === 'wrong' && answers.q8 === 'wrong') { %> is-invalid <% } %>" 
+            type="radio" name="q8" value="wrong" id="q8a4">
+          <label class="form-check-label" for="q8a4">Graphical user interface (GUI)</label>
+        </div>
+        <% if (feedback.q8 === 'wrong') { %>
+            <div class="invalid-feedback">The correct answer is "Command line interface (CLI)".</div>
+        <% } %>
+      </div>
+
+      <!-- Question 9 -->
+     <div class="mb-4">
+        <label class="form-label">Question 9: Which emerging technology is defined as a machine or application which carries out a task that requires some degree of intelligence?</label>
+        <div class="form-check">
+         <input class="form-check-input <% if (feedback.q9 === 'wrong' && answers.q9 === 'wrong') { %> is-invalid <% } %>" 
+         type="radio" name="q9" value="wrong" id="q9a1">
+          <label class="form-check-label" for="q9a1">Virtual Reality (VR)</label>
+        </div>
+        <div class="form-check">
+         <input class="form-check-input <% if (feedback.q9 === 'wrong' && answers.q9 === 'wrong') { %> is-invalid <% } %>" 
+         type="radio" name="q9" value="wrong" id="q9a2">
+          <label class="form-check-label" for="q9a2">Extended Reality (XR)</label>
+        </div>
+        <div class="form-check">
+         <input class="form-check-input <% if (feedback.q9 === 'wrong' && answers.q9 === 'wrong') { %> is-invalid <% } %>" 
+         type="radio" name="q9" value="wrong" id="q9a3">
+          <label class="form-check-label" for="q9a3">Augmented Reality (AR)</label>
+        </div>
+        <div class="form-check">
+         <input class="form-check-input <% if (feedback.q9 === 'wrong' && answers.q9 === 'correct') { %> is-invalid <% } else if (feedback.q9 === 'correct' && answers.q9 === 'correct') { %> is-valid <% } %>" 
+         type="radio" name="q9" value="correct" id="q9a4">
+          <label class="form-check-label" for="q9a4">Artificial Intelligence (AI)</label>
+        </div>
+        <% if (feedback.q9 === 'wrong') { %>
+         <div class="invalid-feedback">The correct answer is "Artificial Intelligence (AI)".</div>
+        <% } %>
+      </div>
+
+        <!-- Question 10 -->
+        <div class="mb-4">
+            <label class="form-label">Question 10: Laptop computer is part of...</label>
+            <div class="form-check">
+                <input class="form-check-input <% if (feedback.q10 === 'wrong' && answers.q10 === 'wrong') { %> is-invalid <% } %>" 
+                type="radio" name="q10" value="wrong" id="q10a1">
+              <label class="form-check-label" for="q10a1">Tablets</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input <% if (feedback.q10 === 'wrong' && answers.q10 === 'correct') { %> is-invalid <% } else if (feedback.q10 === 'correct' && answers.q10 === 'correct') { %> is-valid <% } %>" 
+                type="radio" name="q10" value="correct" id="q10a2">
+              <label class="form-check-label" for="q10a2">Mobile computers</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input <% if (feedback.q10 === 'wrong' && answers.q10 === 'wrong') { %> is-invalid <% } %>" 
+                type="radio" name="q10" value="wrong" id="q10a3">
+              <label class="form-check-label" for="q10a3">Smartphones</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input <% if (feedback.q10 === 'wrong' && answers.q10 === 'wrong') { %> is-invalid <% } %>" 
+                type="radio" name="q10" value="wrong" id="q10a4">
+              <label class="form-check-label" for="q10a4">Desktop computers</label>
+            </div>
+            <% if (feedback.q10 === 'wrong') { %>
+                <div class="invalid-feedback">The correct answer is "Mobile computers".</div>
+            <% } %>
+          </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+
+    <% if (score !== null) { %>
+      <div class="mt-4 text-center">
+        <h2>Your score: <%= score %>/10</h2>
+      </div>
+    <% } %>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
